@@ -8,6 +8,17 @@ export abstract class BoxrecParseBoutsParseBouts {
         this.$ = cheerio.load(boxrecBodyString);
     }
 
+    get enrollments(): object | null {
+        const enrollmentsTableData: Cheerio =
+            this.$("h2:contains('Enrollments') + .boxerSectionContent table tbody td");
+
+        if (enrollmentsTableData) {
+            const d: any = enrollmentsTableData.get(0).data(0);
+        }
+
+        return null;
+    }
+
     protected returnBouts(): Array<[string, string | null]> {
         const bouts: Array<[string, string | null]> = [];
 

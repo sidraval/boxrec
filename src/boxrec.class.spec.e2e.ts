@@ -336,6 +336,10 @@ describe("class Boxrec (E2E)", () => {
 
         describe("where role is boxer", () => {
 
+            describe("enrollments", () => {
+
+            });
+
             it("should return the person's information", () => {
                 expect(getBoxer(352).name).toBe("Floyd Mayweather Jr");
             });
