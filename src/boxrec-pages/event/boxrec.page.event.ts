@@ -93,11 +93,13 @@ export class BoxrecPageEvent extends BoxrecEvent implements OutputInterface {
     get location(): BoxrecBoutLocation {
         const locationObject: BoxrecBoutLocation = Object.assign({}, emptyLocationObject);
         // events page has the `thead`
-        let location: string | null = this.$(this.parseEventResults()).find("thead table > tbody tr:nth-child(2) b").html();
+        let location: string | null =
+        this.$(this.parseEventResults()).find("thead table > tbody tr:nth-child(2) b").html();
 
         if (location === null) {
             // this should be for bouts page
-            // todo this is because one is for events, one if for bouts.  It's not the best approach and should be refactored
+            // todo this is because one is for events, one if for bouts
+            // It's not the best approach and should be refactored
             const locationClone: Cheerio = this.$("h2").next(".flag").parent().clone();
             locationClone.remove("h2");
             locationClone.find("a:nth-child(1)").remove();

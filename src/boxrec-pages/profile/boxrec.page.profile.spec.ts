@@ -345,7 +345,7 @@ describe("class BoxrecPageProfile", () => {
                     describe("getter secondBoxerLast6", () => {
 
                         it("should return the second boxer's last 6", () => {
-                            expect(gggCanelo.secondBoxerLast6).toEqual([WinLossDraw.win, WinLossDraw.win, WinLossDraw.win, WinLossDraw.win, WinLossDraw.win, WinLossDraw.win]);
+                            expect(gggCanelo.secondBoxerLast6).toEqual(new Array().fill(WinLossDraw.win));
                         });
 
                     });
@@ -527,7 +527,8 @@ describe("class BoxrecPageProfile", () => {
                         });
 
                         it("should not contain known profile values like global id", () => {
-                            const globalId: string[] | undefined = outputGGG.otherInfo.find((key: any) => key[0] === BoxrecProfileTable.globalId);
+                            const globalId: string[] | undefined =
+                            outputGGG.otherInfo.find((key: any) => key[0] === BoxrecProfileTable.globalId);
                             expect(globalId).toBeUndefined();
                         });
 

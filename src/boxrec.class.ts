@@ -166,12 +166,11 @@ export class Boxrec {
      * @param {BoxrecRole} role     the role of the person in boxing (there seems to be multiple profiles for people if they fall under different roles)
      * @param {number} offset       offset number of bouts/events in the profile
      *                              We offset by number and not pages because the number of bouts per page may change
-     * @returns {Promise<BoxrecPageProfileBoxer | BoxrecPageProfileOtherCommon | BoxrecPageProfileEvents | BoxrecPageProfileManager>}
+     * @returns {Promise<BoxrecPageProfileEvents>}
      */
-    static async getPersonById(cookieJar: CookieJar, globalId: number, role: BoxrecRole | null = null,
-                               offset: number = 0):
-        Promise<BoxrecPageProfileBoxer | BoxrecPageProfileOtherCommon | BoxrecPageProfileEvents |
-            BoxrecPageProfileManager | BoxrecPageProfilePromoter> {
+    static async getPersonById<T extends BoxrecPageProfileEvents>(cookieJar: CookieJar, globalId: number, role: BoxrecRole | null = null,
+                                  offset: number = 0):
+        Promise<BoxrecPageProfileEvents> {
         const boxrecPageBody: RequestResponse["body"] = await BoxrecRequests.getPersonById(cookieJar, globalId,
             role, offset);
 
